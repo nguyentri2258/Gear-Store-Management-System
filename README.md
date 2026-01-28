@@ -32,9 +32,14 @@ Development Tools:
 	git clone https://github.com/your-username/your-repo.git
 	cd your-repo
 
-2. Create environment file:
+2. Create environment file and fill information:
 	```bash
 	cp .env.example .env
+
+    DB_DATABASE=
+    DB_USERNAME=
+    DB_PASSWORD=
+    MYSQL_ROOT_PASSWORD=
 
 3. Build & start Docker containers:
 	```bash
@@ -51,7 +56,6 @@ Development Tools:
 6. Access the application:
 
 - Web app: http://localhost:8000
-- phpMyAdmin: http://localhost:8080
 
 ## Database & Seeder
 
