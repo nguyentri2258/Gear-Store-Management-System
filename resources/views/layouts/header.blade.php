@@ -28,7 +28,8 @@
             <a class="nav-link text-white" href="">
                 🛒 Cart
             </a>
-            <a class="btn btn-outline-light btn-sm" href="">
+            <a href="{{ route('users.login') }}"
+                class="btn btn-outline-light px-4 py-2">
                 Login
             </a>
         </div>
