@@ -51,7 +51,7 @@ class UserController extends Controller
 
         $request->session()->regenerate();
 
-        return view('welcome')->with('success','Login successfully');
+        return view('layouts.dashboard')->with('success','Login successfully');
     }
 
     public function logout(Request $request)
