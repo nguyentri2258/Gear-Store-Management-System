@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
         body {
             background-color: #f4f4f4;
@@ -90,8 +87,6 @@
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
-
-    <!-- SIDEBAR -->
     <div class="sidebar" id="sidebar">
         <h4 class="text-center mb-4">My Admin</h4>
         <a href="#">Dashboard</a>
@@ -99,7 +94,6 @@
         <a href="#">Users</a>
         <a href="{{ route('categories.index') }}">Categories</a>
         <a href="{{ route('products.index') }}">Products</a>
-
         <a href="#">Settings</a>
         <form method="POST" action="{{ route('users.logout') }}" class="m-0">
             @csrf
@@ -111,7 +105,6 @@
         </form>
     </div>
 
-    <!-- HEADER -->
     <div class="header d-flex justify-content-between align-items-center" id="header">
         <span class="toggle-btn" onclick="toggleSidebar()">☰</span>
         <div>Welcome back, Admin</div>
@@ -120,7 +113,6 @@
     <div class='content' id='content'>
         @yield('content')
     </div>
-
 
     <script>
         function toggleSidebar() {

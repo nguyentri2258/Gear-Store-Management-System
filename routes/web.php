@@ -11,7 +11,8 @@ Route::get('/', function () {
 });
 
 Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
-
+Route::get('/products', [ProductController::class, 'shop'])->name('products.shop');
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 Route::get('/register', [UserController::class, 'showRegister'])->name('users.register');
 Route::post('/register', [UserController::class, 'register']);
@@ -24,6 +25,6 @@ Route::middleware('auth')
     ->group(function(){
         Route::get('/', [DashboardController::class, 'index'])->name('dashboards.index');
 
-        Route::resource('products', ProductController::class);
+        Route::resource('products', ProductController::class)->except(['show']);
         Route::resource('categories', CategoryController::class);
     });

@@ -24,11 +24,6 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
-    public function show(Product $product)
-    {
-        return view('products.index', compact('product'));
-    }
-
     public function create() {
         $categories = Category::all();
         return view('products.create', compact('categories'));
@@ -68,5 +63,16 @@ class ProductController extends Controller
     public function destroy(Product $product) {
         $product->delete();
         return redirect()->route('products.index')->with('success','Delete product successfully');
+    }
+
+    public function shop()
+    {
+        $products = Product::latest()->get();
+        return view('shops.showcase', compact('products'));
+    }
+
+    public function show(Product $product)
+    {
+        return view('shops.showcase', compact('product'));
     }
 }
