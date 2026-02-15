@@ -18,7 +18,9 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        return view('categories.index', compact('category'));
+        $products = $category->products()->latest()->get();
+
+        return view('shops.showcase', compact('products', 'category'));
     }
 
     public function store(Request $request){

@@ -13,6 +13,7 @@ Route::get('/', function () {
 Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 Route::get('/products', [ProductController::class, 'shop'])->name('products.shop');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
 Route::get('/register', [UserController::class, 'showRegister'])->name('users.register');
 Route::post('/register', [UserController::class, 'register']);

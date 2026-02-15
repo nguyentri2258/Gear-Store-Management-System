@@ -3,7 +3,9 @@
 @section('content')
 
 <div class="container py-5">
-    <h2 class="text-center mb-5">Our Products</h2>
+    <h2 class="text-center mb-5">
+        {{ isset($category) ? $category->name : 'Our Products' }}
+    </h2>
     <div class="product-grid">
         @foreach($products as $product)
             <div class="product-card">

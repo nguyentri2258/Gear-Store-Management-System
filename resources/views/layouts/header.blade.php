@@ -51,18 +51,21 @@
         <ul class="nav flex-column gap-2 sidebar-menu">
             <li class="nav-item">
                 <a class="nav-link
-                    {{ request()->routeIs('products.*') ? 'active' : '' }}"
+                    {{ request()->routeIs('products.shop') ? 'active' : '' }}"
                 href="{{ route('products.shop') }}">
-                    Products
+                    All Products
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link
-                    {{ request()->routeIs('categories.*') ? 'active' : '' }}"
-                href="{{ route('categories.index') }}">
-                    Categories
-                </a>
-            </li>
+            <hr class="text-secondary">
+            @foreach($categories as $cat)
+                <li class="nav-item">
+                    <a class="nav-link
+                        {{ request()->is('categories/'.$cat->id) ? 'active' : '' }}"
+                    href="{{ route('categories.show', $cat->id) }}">
+                        {{ $cat->name }}
+                    </a>
+                </li>
+            @endforeach
         </ul>
     </div>
 </div>
