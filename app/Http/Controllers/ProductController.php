@@ -21,7 +21,7 @@ class ProductController extends Controller
         $products = Product::where('name','like','%'.$request->name.'%')
                             ->get();
 
-        return view('products.index', compact('products'));
+        return view('shops.showcase', compact('products'));
     }
 
     public function create() {
