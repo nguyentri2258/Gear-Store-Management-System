@@ -33,9 +33,22 @@ class ProductController extends Controller
         $data = $request->validate([
             'name'=>'required|string',
             'quantity'=>'required|integer',
+            'price' => 'required|integer|min:0',
             'category_id'=>'required|exists:categories,id',
-            'description'=>'nullable'
+            'description'=>'nullable',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
         ]);
+
+        if ($request->hasFile('image')) {
+
+            $file = $request->file('image');
+
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+            $file->move(public_path('uploads'), $filename);
+
+            $data['image'] = $filename;
+        }
 
         $product = Product::create($data);
 
@@ -51,9 +64,24 @@ class ProductController extends Controller
         $data = $request->validate([
             'name'=>'required|string',
             'quantity'=>'required|integer',
-            'category_id'=>'required|exist:categories,id',
-            'description'=>'nullable'
+            'price' => 'required|integer|min:0',
+            'category_id'=>'required|exists:categories,id',
+            'description'=>'nullable',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
         ]);
+
+        if ($request->hasFile('image')) {
+
+            if ($product->image && file_exists(public_path('uploads/'.$product->image))) {
+                unlink(public_path('uploads/'.$product->image));
+            }
+
+            $file = $request->file('image');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads'), $filename);
+
+            $data['image'] = $filename;
+        }
 
         $product->update($data);
 

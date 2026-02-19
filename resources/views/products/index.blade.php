@@ -26,7 +26,9 @@
             <thead class='table-dark'>
                 <tr class='text-center'>
                     <th>Name</th>
+                    <th>Image</th>
                     <th>Quantity</th>
+                    <th>Price</th>
                     <th>Category</th>
                     <th>Description</th>
                     <th>Edit</th>
@@ -37,7 +39,15 @@
                 @forelse($products as $product)
                     <tr>
                         <td>{{ $product->name }}</td>
+                        <td>
+                            <img
+                                src="{{ $product->image
+                                    ? asset('uploads/'.$product->image)
+                                    : asset('images/default-thumbnail.jpg') }}"
+                                width="80">
+                        </td>
                         <td>{{ $product->quantity }}</td>
+                        <td>{{ $product->price }}</td>
                         <td>{{ $product->category->name }}</td>
                         <td>{{ $product->description }}</td>
                         <td>
