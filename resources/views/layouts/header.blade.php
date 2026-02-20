@@ -5,7 +5,7 @@
                     type="button"
                     data-bs-toggle="offcanvas"
                     data-bs-target="#sidebar">☰</button>
-            <a class="brand" href="/">MyShop</a>
+            <a class="brand" href="{{ route('home') }}">MyShop</a>
         </div>
         <div class="nav-center desktop-only">
             <form method="GET"

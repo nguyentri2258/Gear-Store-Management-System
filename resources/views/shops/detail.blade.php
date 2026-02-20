@@ -5,14 +5,11 @@
     <div class="row g-4">
         <div class="col-lg-5">
             <div class="product-image-box">
-                <span>No Image</span>
-            </div>
-
-            <div class="d-flex gap-2 mt-3">
-                @foreach($product->images ?? [] as $img)
-                    <img src="{{ asset('storage/'.$img) }}"
-                         class="thumb-img">
-                @endforeach
+                <img
+                    src="{{ $product->image
+                        ? asset('uploads/'.$product->image)
+                        : asset('images/default-thumbnail.jpg') }}"
+                    class="main-image">
             </div>
         </div>
 
@@ -26,18 +23,12 @@
                 View: {{ $product->views ?? 0 }} |
                 Status:
                 <span class="text-success fw-semibold">
-                    {{ $product->in_stock ? 'In stock' : 'Out of stock' }}
+                    {{ $product->quantity ? 'In stock' : 'Out of stock' }}
                 </span>
             </div>
 
             <div class="price-box mb-3">
-                @if($product->old_price)
-                    <div class="old-price">
-                        {{ number_format($product->old_price) }} đ
-                    </div>
-                @endif
-
-                <div class="new-price">
+                <div class="product-price">
                     {{ number_format($product->price) }} đ
                 </div>
             </div>
@@ -76,37 +67,28 @@
 </div>
 <style>
     .product-image-box {
+        width: 100%;
+        height: 400px;
         border-radius: 12px;
         overflow: hidden;
         background: #f5f5f5;
-        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .main-image {
         width: 100%;
+        height: 100%;
         object-fit: contain;
+        transition: transform 0.3s ease;
     }
 
-    .thumb-img {
-        width: 70px;
-        height: 70px;
-        object-fit: cover;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        cursor: pointer;
+    .product-image-box:hover .main-image {
+        transform: scale(1.05);
     }
 
-    .thumb-img:hover {
-        border-color: #000;
-    }
-
-    .price-box .old-price {
-        text-decoration: line-through;
-        color: #888;
-        font-size: 16px;
-    }
-
-    .price-box .new-price {
+    .price-box .product-price {
         color: red;
         font-size: 26px;
         font-weight: 700;
