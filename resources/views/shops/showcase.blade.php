@@ -16,18 +16,22 @@
                             : asset('images/default-thumbnail.jpg') }}"
                         class="product-img">
                 </div>
-                <div class="product-body">
-                    <div class="product-title">
-                        {{ $product->name }}
-                    </div>
-                    <div class="product-actions">
-                        <button class="btn btn-dark btn-sm">
+                <div class="product-actions d-flex gap-2">
+
+                    <form action="{{ route('cart.add', $product->id) }}" method="POST" class="w-50">
+                        @csrf
+                        <button type="submit" class="btn btn-dark btn-sm w-100">
                             Add to Cart
                         </button>
-                        <button class="btn btn-outline-dark btn-sm">
+                    </form>
+
+                    <form action="{{ route('cart.add', $product->id) }}" method="POST" class="w-50">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-dark btn-sm w-100">
                             Buy Now
                         </button>
-                    </div>
+                    </form>
+
                 </div>
                 <a href="{{ route('products.show', $product->id) }}"
                    class="stretched-link"></a>

@@ -26,9 +26,22 @@
                 <i class="bi bi-search"></i>
             </button>
 
-            <a href="#" class="cart-link">
+            @php
+                $cartCount = 0;
+                $cart = session('cart', []);
+                foreach($cart as $item){
+                    $cartCount += $item['quantity'];
+                }
+            @endphp
+
+            <a href="{{ route('cart') }}" class="cart-link position-relative">
                 <i class="bi bi-cart3"></i>
-                <span class="cart-badge">2</span>
+
+                @if($cartCount > 0)
+                    <span class="cart-badge">
+                        {{ $cartCount }}
+                    </span>
+                @endif
             </a>
 
             <a href="{{ route('users.login') }}" class="login-btn">

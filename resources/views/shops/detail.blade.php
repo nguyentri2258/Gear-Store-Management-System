@@ -1,6 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
+
 <div class="container py-4">
     <div class="row g-4">
         <div class="col-lg-5">
@@ -34,13 +35,21 @@
             </div>
 
             <div class="d-grid gap-2 mb-3">
-                <button class="btn btn-primary btn-lg">
-                    🛒 Add to cart
-                </button>
+                <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                        🛒 Add to cart
+                    </button>
+                </form>
 
-                <button class="btn btn-danger btn-lg">
-                    Buy now
-                </button>
+                <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-danger btn-lg w-100"
+                            formaction="{{ route('cart.add', $product->id) }}"
+                            onclick="this.form.action='{{ route('cart.add', $product->id) }}';">
+                        Buy now
+                    </button>
+                </form>
             </div>
 
             <div class="product-specs mt-4">
