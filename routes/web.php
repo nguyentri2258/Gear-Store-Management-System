@@ -25,7 +25,7 @@ Route::get('/login', [UserController::class, 'showLogin'])->name('users.login');
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout'])->name('users.logout');
 
-Route::middleware('auth')
+Route::middleware(['auth', 'role:owner'])
     ->prefix('dashboard')
     ->group(function(){
         Route::get('/', [DashboardController::class, 'index'])->name('dashboards.index');

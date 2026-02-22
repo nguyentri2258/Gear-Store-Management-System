@@ -26,6 +26,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'customer'
         ]);
 
         return redirect()->route('users.login')->with('success','Account created successfully');
@@ -36,7 +37,7 @@ class UserController extends Controller
         return view('users.login');
     }
 
-    public function login(Request $request)
+    public function login(Request $request, User $user)
     {
         $credentials = $request->validate([
             'email' => 'required|email',
@@ -51,7 +52,13 @@ class UserController extends Controller
 
         $request->session()->regenerate();
 
-        return view('layouts.dashboard')->with('success','Login successfully');
+        $user = Auth::user();
+
+        if ($user->role === 'owner') {
+            return redirect()->route('dashboards.index')->with('success','Login successfully');
+        }
+
+        return redirect()->route('home')->with('success','Login successfully');
     }
 
     public function logout(Request $request)
