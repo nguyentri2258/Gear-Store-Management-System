@@ -9,7 +9,7 @@
                 Build Your Dream PC
             </h1>
             <p class="lead mb-4">
-                High-performance CPU, GPU, RAM and more – authentic products, best prices.
+                High-performance CPU, GPU, RAM and more - authentic products, best prices.
             </p>
             <a href="{{ route('products.shop') }}" class="btn btn-light btn-lg px-4">
                 Shop Now

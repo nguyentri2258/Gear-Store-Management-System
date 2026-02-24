@@ -27,10 +27,8 @@
                 <tr class='text-center'>
                     <th>Name</th>
                     <th>Image</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Category</th>
-                    <th>Description</th>
+                    <th>Stock</th>
+                    <th>Note</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -46,10 +44,8 @@
                                     : asset('images/default-thumbnail.jpg') }}"
                                 width="80">
                         </td>
-                        <td>{{ $product->quantity }}</td>
-                        <td>{{ $product->price }}</td>
-                        <td>{{ $product->category->name }}</td>
-                        <td>{{ $product->description }}</td>
+                        <td>{{ $product->stock }}</td>
+                        <td>{{ $product->note }}</td>
                         <td>
                             <a href='{{ route('products.edit', $product) }}' class='btn btn-warning'>Edit</a>
                         </td>

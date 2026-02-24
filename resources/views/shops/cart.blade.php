@@ -4,61 +4,62 @@
 
 <div class="container py-5">
     <h2 class="fw-bold mb-4">Shopping Cart</h2>
-
     <div class="row g-4">
         <div class="col-lg-8">
-
             @forelse($cart as $id => $item)
-
-            <div class="cart-item d-flex align-items-center p-3 mb-3">
-
-                <div class="cart-image me-3">
-                    <img src="{{ $item['image']
-                        ? asset('uploads/'.$item['image'])
-                        : asset('images/default-thumbnail.jpg') }}">
-                </div>
-
-                <div class="flex-grow-1">
-                    <div class="fw-semibold">
-                        {{ $item['name'] }}
+                <div class="cart-item d-flex align-items-center p-3 mb-3">
+                    <div class="cart-image me-3">
+                        @if($isDatabase)
+                            <img src="{{ $item->product->image
+                                ? asset('uploads/'.$item->product->image)
+                                : asset('images/default-thumbnail.jpg') }}">
+                        @else
+                            <img src="{{ $item['image']
+                                ? asset('uploads/'.$item['image'])
+                                : asset('images/default-thumbnail.jpg') }}">
+                        @endif
                     </div>
-
-                    <div class="text-muted small mb-2">
-                        {{ number_format($item['price']) }} ₫
-                    </div>
-
-                    <form action="{{ route('cart.update', $id) }}" method="POST">
-                        @csrf
-                        <div class="quantity-box d-flex align-items-center">
-                            <input type="number"
-                                name="quantity"
-                                value="{{ $item['quantity'] }}"
-                                min="1"
-                                class="form-control form-control-sm"
-                                style="width:80px">
-
-                            <button class="btn btn-sm btn-dark ms-2">
-                                Update
-                            </button>
+                    <div class="flex-grow-1">
+                        <div class="fw-semibold">
+                            {{ $isDatabase ? $item->product->name : $item['name'] }}
                         </div>
-                    </form>
-                </div>
+                        <div class="text-muted small mb-2">
+                            {{ number_format($isDatabase ? $item->product->price : $item['price']) }} ₫
+                        </div>
+                        <form action="{{ route('cart.update', $isDatabase ? $item->product_id : $id) }}" method="POST">
+                            @csrf
+                            <div class="quantity-box d-flex align-items-center">
+                                <input type="number"
+                                    name="quantity"
+                                    value="{{ $isDatabase ? $item->quantity : $item['quantity'] }}"
+                                    min="1"
+                                    class="form-control form-control-sm"
+                                    style="width:80px">
 
-                <div class="text-end ms-3">
-                    <div class="fw-bold mb-2">
-                        {{ number_format($item['price'] * $item['quantity']) }} ₫
+                                <button class="btn btn-sm btn-dark ms-2">
+                                    Update
+                                </button>
+                            </div>
+                        </form>
                     </div>
+                    <div class="text-end ms-3">
+                        @php
+                            $price = $isDatabase ? $item->product->price : $item['price'];
+                            $quantity = $isDatabase ? $item->quantity : $item['quantity'];
+                        @endphp
 
-                    <form action="{{ route('cart.remove', $id) }}" method="POST">
-                        @csrf
-                        <button class="btn btn-sm btn-outline-danger">
-                            Remove
-                        </button>
-                    </form>
+                        <div class="fw-bold mb-2">
+                            {{ number_format($price * $quantity) }} ₫
+                        </div>
+
+                        <form action="{{ route('cart.remove', $isDatabase ? $item->product_id : $id) }}" method="POST">
+                            @csrf
+                            <button class="btn btn-sm btn-outline-danger">
+                                Remove
+                            </button>
+                        </form>
+                    </div>
                 </div>
-
-            </div>
-
             @empty
                 <div class="text-center py-5">
                     <h5>Your cart is empty 🛒</h5>

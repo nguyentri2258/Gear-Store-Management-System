@@ -13,6 +13,7 @@ class AdminSeeder extends Seeder
         User::create([
             'name' => 'Owner',
             'email' => 'owner@shop.com',
+            'phone' => '0987654321',
             'password' => Hash::make('12345678'),
             'role' => 'owner'
         ]);

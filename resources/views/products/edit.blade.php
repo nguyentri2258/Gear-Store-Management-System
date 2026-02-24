@@ -34,8 +34,16 @@
             </select>
         </div>
         <div class='mb-3'>
+            <label for='information' class='form-label'>Information</label>
+            <input type='text' name='information' id='information' class='form-control' placeholder='Enter information' value='{{ old('information', $product->information) }}'>
+        </div>
+        <div class='mb-3'>
             <label for='description' class='form-label'>Description</label>
             <input type='text' name='description' id='description' class='form-control' placeholder='Enter description' value='{{ old('description', $product->description) }}'>
+        </div>
+        <div class='mb-3'>
+            <label for='note' class='form-label'>Note</label>
+            <input type='text' name='note' id='note' class='form-control' placeholder='Enter note' value='{{ old('note', $product->note) }}'>
         </div>
         <div class="text-center mb-3">
             <img

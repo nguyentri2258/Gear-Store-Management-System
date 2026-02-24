@@ -6,13 +6,15 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
-Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
-Route::post('/cart/add/{id}', [HomeController::class, 'addToCart'])->name('cart.add');
-Route::post('/cart/update/{id}', [HomeController::class, 'updateCart'])->name('cart.update');
-Route::post('/cart/remove/{id}', [HomeController::class, 'removeFromCart'])->name('cart.remove');
+
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/update/{id}', [CartController::class, 'updateCart'])->name('cart.update');
+Route::post('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
 Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 Route::get('/products', [ProductController::class, 'shop'])->name('products.shop');

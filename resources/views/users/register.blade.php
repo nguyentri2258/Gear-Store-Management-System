@@ -39,6 +39,18 @@
                         </div>
 
                         <div class="mb-3">
+                            <label class="form-label">Phone</label>
+                            <input
+                                type="phone"
+                                name="phone"
+                                class="form-control"
+                                value="{{ old('phone') }}"
+                                placeholder="Enter your phone"
+                                required
+                            >
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">Password</label>
                             <input
                                 type="password"

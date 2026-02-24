@@ -13,12 +13,12 @@
             <input type='text' name='name' id='name' class='form-control' placeholder='Enter name' value='{{ old('name') }}' required>
         </div>
         <div class='mb-3'>
-            <label for='quantity' class='form-label'>Quantity</label>
-            <input type='text' name='quantity' id='quantity' class='form-control' placeholder='Enter quantity' value='{{ old('quantity') }}' required>
+            <label for='stock' class='form-label'>Stock</label>
+            <input type='number' min="0" step="1" name='stock' id='stock' class='form-control' placeholder='Enter stock' value='{{ old('stock') }}' required>
         </div>
         <div class='mb-3'>
             <label for='price' class='form-label'>Price</label>
-            <input type='number' min="0" step="1" name='price' id='price' class='form-control' placeholder='Enter price' value='{{ old('price') }}' required>
+            <input type='number' min="0" step="1000" name='price' id='price' class='form-control' placeholder='Enter price' value='{{ old('price') }}' required>
         </div>
         <div class='mb-3'>
             <label class='form-label'>Category</label>
@@ -33,8 +33,16 @@
             </select>
         </div>
         <div class='mb-3'>
+            <label for='information' class='form-label'>Information</label>
+            <input type='text' name='information' id='information' class='form-control' placeholder='Enter information' value='{{ old('information') }}'>
+        </div>
+        <div class='mb-3'>
             <label for='description' class='form-label'>Description</label>
             <input type='text' name='description' id='description' class='form-control' placeholder='Enter description' value='{{ old('description') }}'>
+        </div>
+        <div class='mb-3'>
+            <label for='note' class='form-label'>Note</label>
+            <input type='text' name='note' id='note' class='form-control' placeholder='Enter note' value='{{ old('note') }}'>
         </div>
         <div class="text-center mb-3">
             <img

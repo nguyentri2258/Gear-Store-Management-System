@@ -25,28 +25,45 @@
                     onclick="toggleSearch()">
                 <i class="bi bi-search"></i>
             </button>
-
-            @php
-                $cartCount = 0;
-                $cart = session('cart', []);
-                foreach($cart as $item){
-                    $cartCount += $item['quantity'];
-                }
-            @endphp
-
             <a href="{{ route('cart') }}" class="cart-link position-relative">
                 <i class="bi bi-cart3"></i>
 
-                @if($cartCount > 0)
+                @if($globalCartCount > 0)
                     <span class="cart-badge">
-                        {{ $cartCount }}
+                        {{ $globalCartCount }}
                     </span>
                 @endif
             </a>
 
-            <a href="{{ route('users.login') }}" class="login-btn">
-                Login
-            </a>
+            @guest
+                <a href="{{ route('users.login') }}" class="login-btn">
+                    Login
+                </a>
+            @endguest
+
+            @auth
+            <div class="dropdown">
+                <a class="d-flex align-items-center text-decoration-none dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown">
+
+                    <span style="font-size:20px;">👤</span>
+                    <span class="ms-2">Hi, {{ Auth::user()->name }}</span>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <form action="{{ route('users.logout') }}" method="POST">
+                            @csrf
+                            <button class="dropdown-item">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            @endauth
         </div>
     </div>
     <div class="mobile-search" id="mobileSearch">

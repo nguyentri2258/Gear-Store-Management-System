@@ -32,10 +32,12 @@ class ProductController extends Controller
     public function store(Request $request) {
         $data = $request->validate([
             'name'=>'required|string',
-            'quantity'=>'required|integer',
+            'stock'=>'required|integer|min:0',
             'price' => 'required|integer|min:0',
             'category_id'=>'required|exists:categories,id',
+            'information'=>'nullable',
             'description'=>'nullable',
+            'note'=>'nullable',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
         ]);
 
@@ -63,10 +65,12 @@ class ProductController extends Controller
     public function update(Request $request, Product $product) {
         $data = $request->validate([
             'name'=>'required|string',
-            'quantity'=>'required|integer',
+            'stock'=>'required|integer|min:0',
             'price' => 'required|integer|min:0',
             'category_id'=>'required|exists:categories,id',
+            'information'=>'nullable',
             'description'=>'nullable',
+            'note'=>'nullable',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
         ]);
 
