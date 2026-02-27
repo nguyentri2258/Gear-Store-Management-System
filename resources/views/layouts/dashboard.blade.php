@@ -90,7 +90,7 @@
     <div class="sidebar" id="sidebar">
         <h4 class="text-center mb-4">My Admin</h4>
         <a href="#">Dashboard</a>
-        <a href="#">Orders</a>
+        <a href="{{ route('orders.index') }}">Orders</a>
         <a href="#">Users</a>
         <a href="{{ route('categories.index') }}">Categories</a>
         <a href="{{ route('products.index') }}">Products</a>

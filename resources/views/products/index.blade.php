@@ -40,7 +40,7 @@
                         <td>
                             <img
                                 src="{{ $product->image
-                                    ? asset('uploads/'.$product->image)
+                                    ? asset('storage/'.$product->image)
                                     : asset('images/default-thumbnail.jpg') }}"
                                 width="80">
                         </td>

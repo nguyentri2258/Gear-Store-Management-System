@@ -7,6 +7,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CheckoutController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -27,6 +29,9 @@ Route::get('/login', [UserController::class, 'showLogin'])->name('users.login');
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout'])->name('users.logout');
 
+Route::get('/checkout', [CheckoutController::class, 'form'])->name('checkout.form');
+Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
+
 Route::middleware(['auth', 'role:owner'])
     ->prefix('dashboard')
     ->group(function(){
@@ -34,4 +39,10 @@ Route::middleware(['auth', 'role:owner'])
 
         Route::resource('products', ProductController::class)->except(['show']);
         Route::resource('categories', CategoryController::class);
+
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+        Route::get('/orders/{order}/edit', [OrderController::class, 'edit'])->name('orders.edit');
+        Route::put('/orders/{order}', [OrderController::class, 'update'])->name('orders.update');
+        Route::get('/orders/search', [OrderController::class, 'search'])->name('orders.search');
+        Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
     });

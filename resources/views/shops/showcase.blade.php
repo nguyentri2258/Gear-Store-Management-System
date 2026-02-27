@@ -12,7 +12,7 @@
                 <a href="{{ route('products.show', $product->id) }}" class="product-image">
                     <img
                         src="{{ $product->image
-                            ? asset('uploads/'.$product->image)
+                            ? asset('storage/'.$product->image)
                             : asset('images/default-thumbnail.jpg') }}"
                         class="product-img">
                 </a>

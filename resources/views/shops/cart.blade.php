@@ -11,11 +11,11 @@
                     <div class="cart-image me-3">
                         @if($isDatabase)
                             <img src="{{ $item->product->image
-                                ? asset('uploads/'.$item->product->image)
+                                ? asset('storage/'.$item->product->image)
                                 : asset('images/default-thumbnail.jpg') }}">
                         @else
                             <img src="{{ $item['image']
-                                ? asset('uploads/'.$item['image'])
+                                ? asset('storage/'.$item['image'])
                                 : asset('images/default-thumbnail.jpg') }}">
                         @endif
                     </div>
@@ -97,9 +97,9 @@
                     </span>
                 </div>
 
-                <button class="btn btn-dark w-100 btn-lg">
+                <a href="{{ route('checkout.form') }}" class="btn btn-dark w-100 btn-lg">
                     Proceed to Checkout
-                </button>
+                </a>
 
             </div>
         </div>

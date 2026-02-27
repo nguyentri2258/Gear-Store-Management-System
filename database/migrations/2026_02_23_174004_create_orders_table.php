@@ -11,12 +11,13 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
-            $table->string('guest_name')->nullable();
-            $table->string('guest_email')->nullable();
-            $table->string('guest_phone')->nullable();
-            $table->text('shipping_address');
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->text('address');
             $table->unsignedBigInteger('total');
             $table->string('status')->default('pending');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

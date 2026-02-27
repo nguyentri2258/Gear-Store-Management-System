@@ -49,7 +49,7 @@
             <img
                 id="imagePreview"
                 src="{{ $product->image
-                    ? asset('uploads/'.$product->image)
+                    ? asset('storage/'.$product->image)
                     : asset('images/default-thumbnail.jpg') }}"
                 style="width:130px;height:130px;border-radius:50%;object-fit:cover;cursor:pointer;">
             <input

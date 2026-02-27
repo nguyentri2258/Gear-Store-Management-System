@@ -8,7 +8,7 @@
             <div class="product-image-box">
                 <img
                     src="{{ $product->image
-                        ? asset('uploads/'.$product->image)
+                        ? asset('storage/'.$product->image)
                         : asset('images/default-thumbnail.jpg') }}"
                     class="main-image">
             </div>
@@ -24,7 +24,7 @@
                 View: {{ $product->views ?? 0 }} |
                 Status:
                 <span class="text-success fw-semibold">
-                    {{ $product->quantity ? 'In stock' : 'Out of stock' }}
+                    {{ $product->stock ? 'In stock' : 'Out of stock' }}
                 </span>
             </div>
 
