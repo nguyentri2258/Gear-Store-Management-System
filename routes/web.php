@@ -20,7 +20,7 @@ Route::post('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->nam
 
 Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 Route::get('/products', [ProductController::class, 'shop'])->name('products.shop');
-Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/products/{product}', [ProductController::class, 'detail'])->name('products.detail');
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
 Route::get('/register', [UserController::class, 'showRegister'])->name('users.register');
@@ -37,7 +37,7 @@ Route::middleware(['auth', 'role:owner'])
     ->group(function(){
         Route::get('/', [DashboardController::class, 'index'])->name('dashboards.index');
 
-        Route::resource('products', ProductController::class)->except(['show']);
+        Route::resource('products', ProductController::class);
         Route::resource('categories', CategoryController::class);
 
         Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');

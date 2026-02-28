@@ -29,8 +29,7 @@
                     <th>Image</th>
                     <th>Stock</th>
                     <th>Note</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody class='text-center'>
@@ -47,14 +46,21 @@
                         <td>{{ $product->stock }}</td>
                         <td>{{ $product->note }}</td>
                         <td>
-                            <a href='{{ route('products.edit', $product) }}' class='btn btn-warning'>Edit</a>
-                        </td>
-                        <td>
-                            <form method='POST' action="{{ route('products.destroy', $product) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type='submit' class='btn btn-danger'>Delete</button>
-                            </form>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="{{ route('products.show', $product) }}"
+                                   class="btn btn-sm btn-info">
+                                    Show
+                                </a>
+                                <a href='{{ route('products.edit', $product) }}'
+                                    class='btn btn-warning'>
+                                    Edit
+                                </a>
+                                <form method='POST' action="{{ route('products.destroy', $product) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type='submit' class='btn btn-danger'>Delete</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @empty

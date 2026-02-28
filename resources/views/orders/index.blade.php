@@ -45,8 +45,6 @@
                         <td>
                             {{ $order->created_at->format('d/m/Y H:i') }}
                         </td>
-
-                        {{-- STATUS DROPDOWN --}}
                         <td>
                             <form action="{{ route('orders.update', $order) }}"
                                   method="POST">
@@ -84,8 +82,6 @@
                                 </select>
                             </form>
                         </td>
-
-                        {{-- ACTIONS --}}
                         <td>
                             <div class="d-flex justify-content-center gap-2">
 

@@ -14,8 +14,8 @@
             <input type='text' name='name' id='name' class='form-control' placeholder='Enter name' value='{{ old('name', $product->name) }}' required>
         </div>
         <div class='mb-3'>
-            <label for='quantity' class='form-label'>Quantity</label>
-            <input type='text' name='quantity' id='quantity' class='form-control' placeholder='Enter quantity' value='{{ old('quantity', $product->quantity) }}' required>
+            <label for='stock' class='form-label'>Stock</label>
+            <input type='text' name='stock' id='stock' class='form-control' placeholder='Enter stock' value='{{ old('stock', $product->stock) }}' required>
         </div>
         <div class='mb-3'>
             <label for='price' class='form-label'>Price</label>
@@ -33,17 +33,40 @@
                 @endforeach
             </select>
         </div>
-        <div class='mb-3'>
-            <label for='information' class='form-label'>Information</label>
-            <input type='text' name='information' id='information' class='form-control' placeholder='Enter information' value='{{ old('information', $product->information) }}'>
+        <div class="mb-3">
+            <label for="information" class="form-label">Information</label>
+            <textarea
+                name="information"
+                id="information"
+                class="form-control"
+                rows="4"
+                placeholder="Enter information"
+                style="resize: vertical; overflow-y: auto;"
+            >{{ old('information', $product->information) }}</textarea>
         </div>
-        <div class='mb-3'>
-            <label for='description' class='form-label'>Description</label>
-            <input type='text' name='description' id='description' class='form-control' placeholder='Enter description' value='{{ old('description', $product->description) }}'>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+                name="description"
+                id="description"
+                class="form-control"
+                rows="5"
+                placeholder="Enter description"
+                style="resize: vertical; overflow-y: auto;"
+            >{{ old('description', $product->description) }}</textarea>
         </div>
-        <div class='mb-3'>
-            <label for='note' class='form-label'>Note</label>
-            <input type='text' name='note' id='note' class='form-control' placeholder='Enter note' value='{{ old('note', $product->note) }}'>
+
+        <div class="mb-3">
+            <label for="note" class="form-label">Note</label>
+            <textarea
+                name="note"
+                id="note"
+                class="form-control"
+                rows="3"
+                placeholder="Enter note"
+                style="resize: vertical; overflow-y: auto;"
+            >{{ old('note', $product->note) }}</textarea>
         </div>
         <div class="text-center mb-3">
             <img
