@@ -32,17 +32,39 @@
                 @endforeach
             </select>
         </div>
-        <div class='mb-3'>
-            <label for='information' class='form-label'>Information</label>
-            <input type='text' name='information' id='information' class='form-control' placeholder='Enter information' value='{{ old('information') }}'>
+        <div class="mb-3">
+            <label for="information" class="form-label">Information</label>
+            <textarea
+                name="information"
+                id="information"
+                class="form-control"
+                rows="4"
+                placeholder="Enter information"
+                style="resize: vertical; overflow-y: auto;"
+            >{{ old('information') }}</textarea>
         </div>
-        <div class='mb-3'>
-            <label for='description' class='form-label'>Description</label>
-            <input type='text' name='description' id='description' class='form-control' placeholder='Enter description' value='{{ old('description') }}'>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+                name="description"
+                id="description"
+                class="form-control"
+                rows="5"
+                placeholder="Enter description"
+                style="resize: vertical; overflow-y: auto;"
+            >{{ old('description') }}</textarea>
         </div>
-        <div class='mb-3'>
-            <label for='note' class='form-label'>Note</label>
-            <input type='text' name='note' id='note' class='form-control' placeholder='Enter note' value='{{ old('note') }}'>
+
+        <div class="mb-3">
+            <label for="note" class="form-label">Note</label>
+            <textarea
+                name="note"
+                id="note"
+                class="form-control"
+                rows="3"
+                placeholder="Enter note"
+                style="resize: vertical; overflow-y: auto;"
+            >{{ old('note') }}</textarea>
         </div>
         <div class="text-center mb-3">
             <img

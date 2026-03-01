@@ -55,7 +55,7 @@
                             {{ number_format($product->price) }} ₫
                         </div>
 
-                        <a href="{{ route('products.show', $product->id) }}"
+                        <a href="{{ route('products.detail', $product->id) }}"
                            class="btn btn-dark btn-sm w-100">
                             View Detail
                         </a>

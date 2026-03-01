@@ -21,10 +21,9 @@
             </h4>
 
             <div class="text-muted small mb-2">
-                View: {{ $product->views ?? 0 }} |
-                Status:
+                Stock:
                 <span class="text-success fw-semibold">
-                    {{ $product->stock ? 'In stock' : 'Out of stock' }}
+                    {{ $product->stock > 0 ? $product->stock : 'Out of stock'}}
                 </span>
             </div>
 
@@ -55,11 +54,7 @@
             <div class="product-specs mt-4">
                 <h6 class="fw-bold mb-2">Info</h6>
                 <ul class="list-unstyled small">
-                    <li>Socket:</li>
-                    <li>Operating Frequency:</li>
-                    <li>Performance Cores:</li>
-                    <li>Efficient Cores:</li>
-                    <li>Warranty:</li>
+                    {!! nl2br(e($product->information)) !!}
                 </ul>
             </div>
 

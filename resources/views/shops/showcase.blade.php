@@ -9,7 +9,7 @@
     <div class="product-grid">
         @foreach($products as $product)
             <div class="product-card">
-                <a href="{{ route('products.show', $product->id) }}" class="product-image">
+                <a href="{{ route('products.detail', $product->id) }}" class="product-image">
                     <img
                         src="{{ $product->image
                             ? asset('storage/'.$product->image)
@@ -17,7 +17,7 @@
                         class="product-img">
                 </a>
                 <div class="product-body">
-                    <a href="{{ route('products.show', $product->id) }}"
+                    <a href="{{ route('products.detail', $product->id) }}"
                        class="product-title text-decoration-none">
                         {{ $product->name }}
                     </a>
@@ -31,7 +31,7 @@
                                 Add to Cart
                             </button>
                         </form>
-                        <a href="{{ route('products.show', $product->id) }}"
+                        <a href="{{ route('products.detail', $product->id) }}"
                            class="btn btn-outline-dark btn-sm w-100">
                             View Detail
                         </a>

@@ -44,7 +44,6 @@
                 style="resize: vertical; overflow-y: auto;"
             >{{ old('information', $product->information) }}</textarea>
         </div>
-
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <textarea
@@ -56,7 +55,6 @@
                 style="resize: vertical; overflow-y: auto;"
             >{{ old('description', $product->description) }}</textarea>
         </div>
-
         <div class="mb-3">
             <label for="note" class="form-label">Note</label>
             <textarea
